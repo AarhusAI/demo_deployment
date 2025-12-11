@@ -186,7 +186,7 @@ argo-cd:
 
       # -- Enable exec feature in Argo UI
       ## Ref: https://argo-cd.readthedocs.io/en/latest/operator-manual/rbac/#exec-resource
-      exec.enabled: false
+      exec.enabled: true
 
       # -- Enable local admin user
       ## Ref: https://argo-cd.readthedocs.io/en/latest/faq/#how-to-disable-admin-user
@@ -434,7 +434,8 @@ argo-cd:
 
       # -- File containing user-defined policies and role definitions.
       # @default -- `''` (See [values.yaml])
-      policy.csv: ''
+      policy.csv: |
+        g, argocd, role:admin
       # Policy rules are in the form:
       #  p, subject, resource, action, object, effect
       # Role definitions and bindings are in the form:
@@ -3477,7 +3478,7 @@ argo-cd:
   ## Notifications controller
   notifications:
     # -- Enable notifications controller
-    enabled: true
+    enabled: false
 
     # -- Notifications controller name string
     name: notifications-controller
