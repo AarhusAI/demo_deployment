@@ -708,31 +708,31 @@ argo-cd:
 
   # -- Array of extra K8s manifests to deploy
   ## Note: Supports use of custom Helm templates
-  extraObjects:
-    - apiVersion: networking.k8s.io/v1
-      kind: Ingress
-      metadata:
-        name: argocd-server
-        namespace: argo-cd
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt
-      spec:
-        ingressClassName: traefik
-        rules:
-          - host: argocd.stgai.itkdev.dk
-            http:
-              paths:
-                - path: /
-                  pathType: Prefix
-                  backend:
-                    service:
-                      name: argo-cd-argocd-server
-                      port:
-                        number: 80
-        tls:
-          - hosts:
-              - argocd.stgai.itkdev.dk
-            secretName: argocd-server-tls
+#  extraObjects:
+#    - apiVersion: networking.k8s.io/v1
+#      kind: Ingress
+#      metadata:
+#        name: argocd-server
+#        namespace: argo-cd
+#        annotations:
+#          cert-manager.io/cluster-issuer: letsencrypt
+#      spec:
+#        ingressClassName: traefik
+#        rules:
+#          - host: argocd.stgai.itkdev.dk
+#            http:
+#              paths:
+#                - path: /
+#                  pathType: Prefix
+#                  backend:
+#                    service:
+#                      name: argo-cd-argocd-server
+#                      port:
+#                        number: 80
+#        tls:
+#          - hosts:
+#              - argocd.stgai.itkdev.dk
+#            secretName: argocd-server-tls
 
   ## Application controller
   controller:
@@ -2391,7 +2391,7 @@ argo-cd:
     # Argo CD server ingress configuration
     ingress:
       # -- Enable an ingress resource for the Argo CD server
-      enabled: false
+      enabled: true
       # -- Specific implementation for ingress controller. One of `generic`, `aws` or `gke`
       ## Additional configuration might be required in related configuration sections
       controller: generic
