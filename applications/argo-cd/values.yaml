@@ -43,7 +43,7 @@ argo-cd:
   global:
     # -- Default domain used by all components
     ## Used for ingresses, certificates, SSO, notifications, etc.
-    domain: argocd.example.com
+    domain: argocd.stgai.itkdev.dk
 
     # -- Runtime class name for all components
     runtimeClassName: ""
@@ -2414,7 +2414,8 @@ argo-cd:
       labels: {}
       # -- Additional ingress annotations
       ## Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#option-1-ssl-passthrough
-      annotations: {}
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt"
         # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
         # nginx.ingress.kubernetes.io/ssl-passthrough: "true"
 
