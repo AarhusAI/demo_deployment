@@ -156,12 +156,12 @@ open-webui:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt
       traefik.ingress.kubernetes.io/router.middlewares: openwebui-was-redirect@kubernetescrd
-    host: demo.stgai.itkdev.dk
+    host: demo.os2ai.dk
     additionalHosts: []
     tls:
       - hosts:
-          - demo.stgai.itkdev.dk
-        secretName: demo.stgai.itkdev.dk-tls
+          - demo.os2ai.dk
+        secretName: demo.os2ai.dk-tls
     existingSecret: ""
     extraLabels: {}
     # extraLabels:
@@ -282,9 +282,9 @@ open-webui:
     - name: ENABLE_LOGIN_FORM
       value: "True"
     - name: WEBUI_URL
-      value: "https://demo.stgai.itkdev.dk"
+      value: "https://demo.os2ai.dk"
     - name: CORS_ALLOW_ORIGIN
-      value: "https://demo.stgai.itkdev.dk;http://demo.stgai.itkdev.dk"
+      value: "https://demo.os2ai.dk;http://demo.os2ai.dk"
     - name: USER_AGENT
       value: "AarhusAI Demo"
     - name: DEFAULT_LOCALE
