@@ -1,3 +1,5 @@
+repoUrl: https://github.com/AarhusAI/demo_deployment.git
+
 apps:
   # Basic setup
   - name: argo-cd-resources
