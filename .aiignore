@@ -1,0 +1,6 @@
+# Do not read local unsealed secrets
+/**/local-secrects/*
+
+# Protected download sealed secret public certificates.
+*.pem
+**/*.pem
