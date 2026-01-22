@@ -36,7 +36,8 @@ keycloak-operator:
     create: true
     name: ""
   tolerations: []
-  watchNamespaces: []
+  watchNamespaces:
+    - os2adgang
 
   keycloakOperatorClusterroleBindingCrb: {}
   keycloakOperatorClusterroleCr: {}
