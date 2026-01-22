@@ -4,6 +4,9 @@ metadata:
   name: keycloak
 spec:
   instances: 1
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
   db:
     vendor: postgres
     host: cloudnative-pg-cluster-rw
@@ -15,7 +18,7 @@ spec:
       name: cloudnative-pg-cluster-os2adgang
       key: password
   http:
-    httpEnabled: true
+    tlsSecret: keycloak-tls-secret
   hostname:
     hostname: {{ .Values.domain }}
   proxy:
