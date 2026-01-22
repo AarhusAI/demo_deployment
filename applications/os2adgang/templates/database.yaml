@@ -4,6 +4,6 @@ metadata:
   name: os2adgang
 spec:
   name: os2adgang
-  owner: os2adgang
+  owner: admin
   cluster:
     name: cloudnative-pg-cluster
