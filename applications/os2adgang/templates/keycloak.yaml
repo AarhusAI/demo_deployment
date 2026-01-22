@@ -1,0 +1,21 @@
+apiVersion: k8s.keycloak.org/v2alpha1
+kind: Keycloak
+metadata:
+  name: keycloak
+spec:
+  instances: 1
+  db:
+    vendor: postgres
+    host: cloudnative-pg-cluster-rw:5432/os2adgang
+    usernameSecret:
+      name: cloudnative-pg-cluster-os2adgang
+      key: username
+    passwordSecret:
+      name: cloudnative-pg-cluster-os2adgang
+      key: password
+  http:
+    tlsSecret: keycloak-tls-secret
+  hostname:
+    hostname: {{ .Values.domain }}
+  proxy:
+    headers: xforwarded
