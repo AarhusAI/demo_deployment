@@ -16,5 +16,7 @@ spec:
       key: password
   http:
     httpEnabled: true
+  hostname:
+    hostname: {{ .Values.domain }}
   proxy:
     headers: xforwarded
