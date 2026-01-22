@@ -14,8 +14,6 @@ spec:
       name: cloudnative-pg-cluster-os2adgang
       key: password
   http:
-    tlsSecret: keycloak-tls-secret
-  hostname:
-    hostname: {{ .Values.domain }}
+    httpEnabled: true
   proxy:
     headers: xforwarded
