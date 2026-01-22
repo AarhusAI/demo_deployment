@@ -7,6 +7,7 @@ spec:
   ingress:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt
+    tlsSecret: keycloak-tls-secret
   db:
     vendor: postgres
     host: cloudnative-pg-cluster-rw
@@ -19,8 +20,6 @@ spec:
       key: password
   http:
     httpEnabled: true
-  ingress:
-    tlsSecret: keycloak-tls-secret
   hostname:
     hostname: {{ .Values.domain }}
   proxy:
