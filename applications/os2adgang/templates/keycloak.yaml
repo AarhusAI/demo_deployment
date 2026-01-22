@@ -12,10 +12,10 @@ spec:
     host: cloudnative-pg-cluster-rw
     database: os2adgang
     usernameSecret:
-      name: cloudnative-pg-cluster-os2adgang
+      name: cloudnative-pg-cluster-admin
       key: username
     passwordSecret:
-      name: cloudnative-pg-cluster-os2adgang
+      name: cloudnative-pg-cluster-admin
       key: password
   http:
     tlsSecret: keycloak-tls-secret
