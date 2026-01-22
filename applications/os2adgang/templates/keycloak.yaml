@@ -6,7 +6,8 @@ spec:
   instances: 1
   db:
     vendor: postgres
-    host: cloudnative-pg-cluster-rw:5432/os2adgang
+    host: cloudnative-pg-cluster-rw
+    database: os2adgang
     usernameSecret:
       name: cloudnative-pg-cluster-os2adgang
       key: username
