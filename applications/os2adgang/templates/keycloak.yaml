@@ -18,6 +18,8 @@ spec:
       name: cloudnative-pg-cluster-admin
       key: password
   http:
+    httpEnabled: true
+  ingress:
     tlsSecret: keycloak-tls-secret
   hostname:
     hostname: {{ .Values.domain }}
