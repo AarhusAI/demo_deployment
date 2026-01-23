@@ -333,7 +333,9 @@ open-webui:
 
     # OIDC
     - name: ENABLE_OAUTH_SIGNUP
-      value: true
+      value: "True"
+    - name: OAUTH_MERGE_ACCOUNTS_BY_EMAIL
+      value: "True"
     - name: OAUTH_CLIENT_ID
       value: os2ai
     - name: OAUTH_CLIENT_SECRET
