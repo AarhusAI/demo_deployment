@@ -332,6 +332,8 @@ open-webui:
       value: "True"
 
     # OIDC
+    - name: ENABLE_OAUTH_SIGNUP
+      value: true
     - name: OAUTH_CLIENT_ID
       value: os2ai
     - name: OAUTH_CLIENT_SECRET
