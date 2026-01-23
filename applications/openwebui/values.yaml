@@ -346,6 +346,8 @@ open-webui:
       value: Fælleskommunal Adgangsstyring
     - name: OPENID_REDIRECT_URI
       value: https://demo.os2ai.dk/oauth/oidc/callback
+    - name: ENABLE_OAUTH_ROLE_MANAGEMENT
+      value: "True"
     - name: OAUTH_ADMIN_ROLES
       value: admin
     - name: OAUTH_ALLOWED_ROLES
