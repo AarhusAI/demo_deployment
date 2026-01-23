@@ -345,7 +345,7 @@ open-webui:
     - name: OAUTH_ADMIN_ROLES
       value: admin
     - name: OAUTH_EMAIL_CLAIM
-      value: "upn"
+      value: "email"
     - name: ENABLE_OAUTH_GROUP_MANAGEMENT
       value: "False"
     - name: ENABLE_OAUTH_GROUP_CREATION
