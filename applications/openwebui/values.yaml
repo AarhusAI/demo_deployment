@@ -332,6 +332,18 @@ open-webui:
       value: "True"
 
     # OIDC
+    - name: OAUTH_CLIENT_ID
+      value: os2ai
+    - name: OAUTH_CLIENT_SECRET
+      value: eB2mmD1tYX2hrByAJXbl6q6Zj4dvfBvP #OS2adgang TODO: regen secret on startup, place in secret, make available here.
+    - name: OPENID_PROVIDER_URL
+      value: https://adgang.stgai.itkdev.dk/realms/demo-kommune/.well-known/openid-configuration
+    - name: OAUTH_PROVIDER_NAME
+      value: Fælleskommunal Adgangsstyring
+    - name: OPENID_REDIRECT_URI
+      value: https://demo.os2ai.dk/oauth/oidc/callback
+    - name: OAUTH_ADMIN_ROLES
+      value: admin
     - name: OAUTH_EMAIL_CLAIM
       value: "upn"
     - name: ENABLE_OAUTH_GROUP_MANAGEMENT
@@ -341,7 +353,7 @@ open-webui:
     - name: ENABLE_OAUTH_ID_TOKEN_COOKIE
       value: "False"
     - name: OAUTH_ALLOWED_DOMAINS
-      value: "aarhus.dk"
+      value: "adgang.stgai.itkdev.dk"
     - name: JWT_EXPIRES_IN
       value: "2d"
 
