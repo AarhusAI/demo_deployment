@@ -348,6 +348,10 @@ open-webui:
       value: https://demo.os2ai.dk/oauth/oidc/callback
     - name: OAUTH_ADMIN_ROLES
       value: admin
+    - name: OAUTH_ALLOWED_ROLES
+      value: user
+    - name: OAUTH_ROLES_CLAIM
+      value: "roles"
     - name: OAUTH_EMAIL_CLAIM
       value: "email"
     - name: ENABLE_OAUTH_GROUP_MANAGEMENT
