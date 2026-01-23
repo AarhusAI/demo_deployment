@@ -352,8 +352,6 @@ open-webui:
       value: "False"
     - name: ENABLE_OAUTH_ID_TOKEN_COOKIE
       value: "False"
-    - name: OAUTH_ALLOWED_DOMAINS
-      value: "adgang.stgai.itkdev.dk"
     - name: JWT_EXPIRES_IN
       value: "2d"
 
