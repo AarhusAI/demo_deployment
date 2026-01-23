@@ -95,26 +95,3 @@ spec:
             memory: 2Gi
           requests:
             memory: 1700Mi
-        volumeMounts:
-        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-          name: kube-api-access-vs4gd
-          readOnly: true
-      volumes:
-      - name: kube-api-access-vs4gd
-        projected:
-          defaultMode: 420
-          sources:
-          - serviceAccountToken:
-              expirationSeconds: 3607
-              path: token
-          - configMap:
-              items:
-              - key: ca.crt
-                path: ca.crt
-              name: kube-root-ca.crt
-          - downwardAPI:
-              items:
-              - fieldRef:
-                  apiVersion: v1
-                  fieldPath: metadata.namespace
-                path: namespace
