@@ -1,0 +1,112 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: keycloak-exporter
+spec:
+  replicas: 0
+  template:
+    spec:
+      containers:
+      - command:
+        - bash
+        args:
+        - -c
+        - while true; do sleep 2000; done
+        env:
+        - name: KC_HOSTNAME
+          value: adgang.stgai.itkdev.dk
+        - name: KC_HTTP_ENABLED
+          value: "true"
+        - name: KC_HTTP_PORT
+          value: "8080"
+        - name: KC_HTTPS_PORT
+          value: "8443"
+        - name: KC_DB
+          value: postgres
+        - name: KC_DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: cloudnative-pg-cluster-admin
+        - name: KC_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: cloudnative-pg-cluster-admin
+        - name: KC_DB_URL_DATABASE
+          value: os2adgang
+        - name: KC_DB_URL_HOST
+          value: cloudnative-pg-cluster-rw
+        - name: KC_PROXY_HEADERS
+          value: xforwarded
+        - name: KC_BOOTSTRAP_ADMIN_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: keycloak-initial-admin
+        - name: KC_BOOTSTRAP_ADMIN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: keycloak-initial-admin
+        - name: KC_HEALTH_ENABLED
+          value: "true"
+        - name: KC_CACHE
+          value: ispn
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        - name: KC_SPI_CACHE_EMBEDDED_DEFAULT_MACHINE_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: spec.nodeName
+        - name: KC_TRUSTSTORE_PATHS
+          value: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        - name: KC_TRACING_SERVICE_NAME
+          value: keycloak
+        - name: KC_TRACING_RESOURCE_ATTRIBUTES
+          value: k8s.namespace.name=os2adgang
+        image: quay.io/keycloak/keycloak:26.5.1
+        imagePullPolicy: Always
+        name: keycloak
+        ports:
+        - containerPort: 8443
+          name: https
+          protocol: TCP
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        - containerPort: 9000
+          name: management
+          protocol: TCP
+        resources:
+          limits:
+            memory: 2Gi
+          requests:
+            memory: 1700Mi
+        volumeMounts:
+        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          name: kube-api-access-vs4gd
+          readOnly: true
+      volumes:
+      - name: kube-api-access-vs4gd
+        projected:
+          defaultMode: 420
+          sources:
+          - serviceAccountToken:
+              expirationSeconds: 3607
+              path: token
+          - configMap:
+              items:
+              - key: ca.crt
+                path: ca.crt
+              name: kube-root-ca.crt
+          - downwardAPI:
+              items:
+              - fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.namespace
+                path: namespace
