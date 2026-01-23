@@ -357,7 +357,9 @@ open-webui:
     - name: OAUTH_EMAIL_CLAIM
       value: "email"
     - name: ENABLE_OAUTH_GROUP_MANAGEMENT
-      value: "False"
+      value: "True"
+    - name: OAUTH_GROUP_CLAIM
+      value: "roles"
     - name: ENABLE_OAUTH_GROUP_CREATION
       value: "False"
     - name: ENABLE_OAUTH_ID_TOKEN_COOKIE
