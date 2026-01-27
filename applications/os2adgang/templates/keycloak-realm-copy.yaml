@@ -622,11 +622,11 @@ spec:
         attributes:
           realm_client: "false"
           oidc.ciba.grant.enabled: "false"
-          client.secret.creation.time: {{ $system.secretGenerationTime }}
+          client.secret.creation.time: "{{ $system.secretGenerationTime }}"
           backchannel.logout.session.required: "true"
           standard.token.exchange.enabled: "false"
           oauth2.jwt.authorization.grant.enabled: "false"
-          post.logout.redirect.uris: {{ $system.postLogoutRedirectUris }}
+          post.logout.redirect.uris: "{{ $system.postLogoutRedirectUris }}"
           oauth2.device.authorization.grant.enabled: "false"
           backchannel.logout.revoke.offline.tokens: "false"
           dpop.bound.access.tokens: "false"
