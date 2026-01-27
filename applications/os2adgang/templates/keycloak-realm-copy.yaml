@@ -1,13 +1,13 @@
 apiVersion: k8s.keycloak.org/v2alpha1
 kind: KeycloakRealmImport
 metadata:
-  name: demo-kommune-copy
+  name: demo-kommune-copy-2
 spec:
   keycloakCRName: keycloak
   realm:
-    id: demo-kommune-copy
-    realm: demo-kommune-copy
-    displayName: Demo Kommune (kopi)
+    id: demo-kommune-copy-2
+    realm: demo-kommune-copy-2
+    displayName: Demo Kommune (kopi 2)
     displayNameHtml: ""
     notBefore: 0
     defaultSignatureAlgorithm: RS256
@@ -59,13 +59,11 @@ spec:
           description: ${role_uma_authorization}
           composite: false
           clientRole: false
-          containerId: "{{ .Values.realm.name }}"
           attributes: {}
         - name: offline_access
           description: ${role_offline-access}
           composite: false
           clientRole: false
-          containerId: "{{ .Values.realm.name }}"
           attributes: {}
         - name: default-roles-{{ .Values.realm.name }}
           description: ${role_default-roles}
@@ -79,7 +77,6 @@ spec:
                 - manage-account
                 - view-profile
           clientRole: false
-          containerId: "{{ .Values.realm.name }}"
           attributes: {}
       client:
         realm-management:
@@ -218,7 +215,6 @@ spec:
             description: ""
             composite: false
             clientRole: true
-            containerId: "os2adgang_{{ $system.name }}" # TODO: only works if client.id can be this value
             attributes: {}
             {{- end }}
           {{- end }}
@@ -315,7 +311,6 @@ spec:
       description: ${role_default-roles}
       composite: true
       clientRole: false
-      containerId: "{{ .Values.realm.name }}"
     requiredCredentials:
       - password
     otpPolicyType: totp
