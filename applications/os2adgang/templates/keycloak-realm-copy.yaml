@@ -1,13 +1,12 @@
 apiVersion: k8s.keycloak.org/v2alpha1
 kind: KeycloakRealmImport
 metadata:
-  name: demo-kommune-copy-2
+  name: demo-kommune-copy-3
 spec:
   keycloakCRName: keycloak
   realm:
-    id: demo-kommune-copy-2
-    realm: demo-kommune-copy-2
-    displayName: Demo Kommune (kopi 2)
+    realm: demo-kommune-copy-3
+    displayName: Demo Kommune (kopi 3)
     displayNameHtml: ""
     notBefore: 0
     defaultSignatureAlgorithm: RS256
@@ -210,8 +209,7 @@ spec:
           {{- range $system := .Values.systems }}
         {{ $system.name }}:
             {{- range $role := $system.roles }}
-          - id: "os2adgang_{{ $system.name }}_{{ $role }}" # TODO: is this generated ID valid?
-            name: {{ $role }}
+          - name: {{ $role }}
             description: ""
             composite: false
             clientRole: true
@@ -278,17 +276,14 @@ spec:
             attributes: {}
     groups:
       {{- range $system := .Values.systems }}
-      - id: "os2adgang_group_{{ $system.name }}" # TODO: is this a valid ID?
-        name: "{{ $system.name }}"
+      - name: "{{ $system.name }}"
         description: Users with permissions in {{ $system.displayName }}
         path: "/{{ $system.name }}"
         subGroups:
           {{- range $group := .groups }}
-          - id: "os2adgang_group_{{ $system.name }}_{{ $group.name }}" # TODO: valid ID?
-            name: "{{ $group.name }}"
+          - name: "{{ $group.name }}"
             description: Users with administrator permissions in OS2ai
             path: /{{ $system.name }}/{{ $group.name }}
-            parentId: "os2adgang_group_{{ $system.name }}" # TODO: ref only works if valid ID
             subGroups: []
             {{- if (gt ($group.attributes | keys | len) 0) }}
             attributes:
@@ -523,8 +518,7 @@ spec:
           - organization
           - microprofile-jwt
       {{- range $system := .Values.systems }}
-      - id: "os2adgang_{{ $system.name }}" # TODO: check if this is valid when not a uuid?
-        clientId: {{ $system.name }}
+      - clientId: {{ $system.name }}
         name: {{ $system.displayName }}
         description: {{ $system.description }}
         rootUrl: {{ $system.rootUrl }}
@@ -565,8 +559,7 @@ spec:
         nodeReRegistrationTimeout: -1
         protocolMappers:
           {{- range $protocolMapper := $system.protocolMappers }}
-          - id: "os2adgang_{{ $system.name }}_{{ $protocolMapper.attribute }}"
-            name: "{{ $system.name }}_{{ $protocolMapper.attribute }}"
+          - name: "{{ $system.name }}_{{ $protocolMapper.attribute }}"
             protocol: {{ $system.protocol }}
             protocolMapper: {{ $protocolMapper.type }}
             consentRequired: false
@@ -1241,8 +1234,7 @@ spec:
     identityProviderMappers:
       {{- range $system := .Values.systems }}
         {{- range $fkaMapper := $system.fkaMappers }}
-      - id: "os2adgang_{{ $system.name }}_{{ $fkaMapper.name }}" # TODO: is this ID format valid?
-        name: "{{ $system.displayName }} {{ $fkaMapper.displayName }}"
+      - name: "{{ $system.displayName }} {{ $fkaMapper.displayName }}"
         identityProviderAlias: fka
         identityProviderMapper: "{{ $fkaMapper.type }}"
         # TODO: find ways to generalize here to support all needed cases?
