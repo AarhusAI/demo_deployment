@@ -8,6 +8,7 @@ spec:
   backoffLimit: 4
   template:
     spec:
+      serviceAccountName: keycloak-rollout
       initContainers:
         - name: wait-for-realm-import
           image: rancher/kubectl:v1.35.0
