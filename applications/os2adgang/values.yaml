@@ -1,8 +1,8 @@
 domain: adgang.stgai.itkdev.dk # wishful thinking: adgang.demo.os2ai.dk
 
 realm:
-  name: demo-kommune-copy-6
-  displayName: Demo Kommune (kopi 6)
+  name: demo-kommune-copy-7
+  displayName: Demo Kommune (kopi 7)
 systems:
   - name: os2ai
     displayName: OS2ai
