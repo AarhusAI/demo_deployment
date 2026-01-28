@@ -14,11 +14,11 @@ spec:
           image: rancher/kubectl:v1.35.0
           imagePullPolicy: Always
           command: ["kubectl"]
-          args: ["wait", "--for=condition=complete", "-n {{ .Release.Namespace }}", "job/{{ .Values.realm.name }}"]
+          args: ["wait", "--for=condition=complete", "-n{{ .Release.Namespace }}", "job/{{ .Values.realm.name }}"]
       containers:
         - name: restart-kubectl-statefulset
           image: rancher/kubectl:v1.35.0
           imagePullPolicy: Always
           command: ["kubectl"]
-          args: ["rollout", "restart", "-n {{ .Release.Namespace }}", "statefulset/keycloak"]
+          args: ["rollout", "restart", "-n{{ .Release.Namespace }}", "statefulset/keycloak"]
       restartPolicy: OnFailure
