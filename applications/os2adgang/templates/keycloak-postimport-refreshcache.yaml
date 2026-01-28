@@ -15,7 +15,7 @@ spec:
           command: ["kubectl"]
           args: ["wait", "--for=condition=complete", "-n {{ .Release.Namespace }}", "job/{{ .Values.realm.name }}"]
       containers:
-        - name: wait-for-realm-import
+        - name: restart-kubectl-statefulset
           image: rancher/kubectl:v1.35.0
           imagePullPolicy: Always
           command: ["kubectl"]
