@@ -24,3 +24,5 @@ spec:
     hostname: {{ .Values.domain }}
   proxy:
     headers: xforwarded
+  update:
+    strategy: Auto
