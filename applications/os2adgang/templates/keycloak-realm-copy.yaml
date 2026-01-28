@@ -59,11 +59,13 @@ spec:
           description: ${role_uma_authorization}
           composite: false
           clientRole: false
+          containerId: {{ .Values.realm.name }}
           attributes: {}
         - name: offline_access
           description: ${role_offline-access}
           composite: false
           clientRole: false
+          containerId: {{ .Values.realm.name }}
           attributes: {}
         - name: default-roles-{{ .Values.realm.name }}
           description: ${role_default-roles}
@@ -77,6 +79,7 @@ spec:
                 - manage-account
                 - view-profile
           clientRole: false
+          containerId: {{ .Values.realm.name }}
           attributes: {}
       client:
         realm-management:
