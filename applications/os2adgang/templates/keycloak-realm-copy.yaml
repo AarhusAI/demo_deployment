@@ -87,36 +87,43 @@ spec:
             description: ${role_view-realm}
             composite: false
             clientRole: true
+            containerId: "{{ .Values.realm.name }}_realm-management"
             attributes: {}
           - name: create-client
             description: ${role_create-client}
             composite: false
             clientRole: true
+            containerId: "{{ .Values.realm.name }}_realm-management"
             attributes: {}
           - name: view-events
             description: ${role_view-events}
             composite: false
             clientRole: true
+            containerId: "{{ .Values.realm.name }}_realm-management"
             attributes: {}
           - name: impersonation
             description: ${role_impersonation}
             composite: false
             clientRole: true
+            containerId: "{{ .Values.realm.name }}_realm-management"
             attributes: {}
           - name: view-identity-providers
             description: ${role_view-identity-providers}
             composite: false
             clientRole: true
+            containerId: "{{ .Values.realm.name }}_realm-management"
             attributes: {}
           - name: query-clients
             description: ${role_query-clients}
             composite: false
             clientRole: true
+            containerId: "{{ .Values.realm.name }}_realm-management"
             attributes: {}
           - name: manage-realm
             description: ${role_manage-realm}
             composite: false
             clientRole: true
+            containerId: "{{ .Values.realm.name }}_realm-management"
             attributes: {}
           - name: view-clients
             description: ${role_view-clients}
@@ -126,26 +133,31 @@ spec:
                 realm-management:
                   - query-clients
             clientRole: true
+            containerId: "{{ .Values.realm.name }}_realm-management"
             attributes: {}
           - name: manage-authorization
             description: ${role_manage-authorization}
             composite: false
             clientRole: true
+            containerId: "{{ .Values.realm.name }}_realm-management"
             attributes: {}
           - name: view-authorization
             description: ${role_view-authorization}
             composite: false
             clientRole: true
+            containerId: "{{ .Values.realm.name }}_realm-management"
             attributes: {}
           - name: manage-users
             description: ${role_manage-users}
             composite: false
             clientRole: true
+            containerId: "{{ .Values.realm.name }}_realm-management"
             attributes: {}
           - name: manage-clients
             description: ${role_manage-clients}
             composite: false
             clientRole: true
+            containerId: "{{ .Values.realm.name }}_realm-management"
             attributes: {}
           - name: realm-admin
             description: ${role_realm-admin}
@@ -172,31 +184,37 @@ spec:
                   - query-users
                   - view-users
             clientRole: true
+            containerId: "{{ .Values.realm.name }}_realm-management"
             attributes: {}
           - name: query-realms
             description: ${role_query-realms}
             composite: false
             clientRole: true
+            containerId: "{{ .Values.realm.name }}_realm-management"
             attributes: {}
           - name: manage-identity-providers
             description: ${role_manage-identity-providers}
             composite: false
             clientRole: true
+            containerId: "{{ .Values.realm.name }}_realm-management"
             attributes: {}
           - name: manage-events
             description: ${role_manage-events}
             composite: false
             clientRole: true
+            containerId: "{{ .Values.realm.name }}_realm-management"
             attributes: {}
           - name: query-groups
             description: ${role_query-groups}
             composite: false
             clientRole: true
+            containerId: "{{ .Values.realm.name }}_realm-management"
             attributes: {}
           - name: query-users
             description: ${role_query-users}
             composite: false
             clientRole: true
+            containerId: "{{ .Values.realm.name }}_realm-management"
             attributes: {}
           - name: view-users
             description: ${role_view-users}
@@ -207,6 +225,7 @@ spec:
                   - query-groups
                   - query-users
             clientRole: true
+            containerId: "{{ .Values.realm.name }}_realm-management"
             attributes: {}
         security-admin-console: []
         {{- if (gt (.Values.systems | len) 0) }}
@@ -588,7 +607,8 @@ spec:
           - organization
           - microprofile-jwt
       {{- end }}
-      - clientId: realm-management
+      - id: "{{ .Values.realm.name }}_realm-management"
+        clientId: realm-management
         name: ${client_realm-management}
         surrogateAuthRequired: false
         enabled: true
