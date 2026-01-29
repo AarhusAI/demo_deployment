@@ -341,7 +341,7 @@ open-webui:
     - name: OAUTH_CLIENT_SECRET
       value: eB2mmD1tYX2hrByAJXbl6q6Zj4dvfBvP #OS2adgang TODO: regen secret on startup, place in secret, make available here.
     - name: OPENID_PROVIDER_URL
-      value: https://adgang.stgai.itkdev.dk/realms/demo-kommune/.well-known/openid-configuration
+      value: https://adgang.stgai.itkdev.dk/realms/test-kommune/.well-known/openid-configuration
     - name: OAUTH_PROVIDER_NAME
       value: Fælleskommunal Adgangsstyring
     - name: OPENID_REDIRECT_URI
