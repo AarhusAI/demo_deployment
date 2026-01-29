@@ -146,4 +146,4 @@ apps:
     automated: false
     valueFiles:
       - cloudnative-pg-values.yaml
-      - values.yaml
+      - os2adgang-values.yaml
