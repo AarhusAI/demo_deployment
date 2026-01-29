@@ -5,6 +5,7 @@ os2adgang-pilot:
   realm:
     name: test-kommune
     displayName: Test Kommune (kopi 7)
+    test: true
   systems:
     - name: os2ai
       displayName: OS2ai
