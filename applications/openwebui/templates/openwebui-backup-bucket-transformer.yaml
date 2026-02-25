@@ -20,7 +20,7 @@ spec:
           name: openwebui-backup-bucket-transformed
         data:
           ACCESS_KEY_ID: {{ "'{{ matrix.secret.data.AWS_ACCESS_KEY_ID }}'" }}
-          SECRET_ACCESS_KEY: {{ "'{{ matrix.secret.data.AWS_SECRET_ACCESS_KEY }}'" }}
+          ACCESS_SECRET_KEY: {{ "'{{ matrix.secret.data.AWS_SECRET_ACCESS_KEY }}'" }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
