@@ -1,0 +1,7 @@
+apiVersion: objectbucket.io/v1alpha1
+kind: ObjectBucketClaim
+metadata:
+  name: os2adgang-backup-bucket
+spec:
+  bucketName: os2adgang-backup-bucket
+  storageClassName: s3-bucket-retain

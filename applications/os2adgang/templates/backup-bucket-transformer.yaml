@@ -1,0 +1,52 @@
+apiVersion: templates.kluctl.io/v1alpha1
+kind: ObjectTemplate
+metadata:
+  name: os2adgang-backup-bucket-transformer
+spec:
+  serviceAccountName: os2adgang-backup-bucket-transformer
+  prune: true
+  matrix:
+    - name: secret
+      object:
+        ref:
+          apiVersion: v1
+          kind: Secret
+          name: os2adgang-backup-bucket
+  templates:
+    - object:
+        apiVersion: v1
+        kind: Secret
+        metadata:
+          name: os2adgang-backup-bucket-transformed
+        data:
+          ACCESS_KEY_ID: {{ "'{{ matrix.secret.data.AWS_ACCESS_KEY_ID }}'" }}
+          ACCESS_SECRET_KEY: {{ "'{{ matrix.secret.data.AWS_SECRET_ACCESS_KEY }}'" }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: os2adgang-backup-bucket-transformer
+rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    # give the ObjectTemplate access to the two involved secrets
+    resourceNames: ["os2adgang-backup-bucket", "os2adgang-backup-bucket-transformed"]
+    verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: os2adgang-backup-bucket-transformer
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: os2adgang-backup-bucket-transformer
+subjects:
+  - kind: ServiceAccount
+    name: os2adgang-backup-bucket-transformer
+    namespace: {{ .Release.Namespace }}
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: os2adgang-backup-bucket-transformer
