@@ -393,7 +393,7 @@ cloudnative-pg:
     provider: s3
     s3:
       region:
-      bucket: openwebui-backup
+      bucket: openwebui-backup-bucket
       path: /
       accessKey: ""
       secretKey: ""
