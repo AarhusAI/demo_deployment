@@ -90,15 +90,6 @@ litellm:
   #  Reference: https://docs.litellm.ai/docs/proxy/configs
   proxy_config:
     model_list:
-      - model_name: AarhusAI-default
-        litellm_params:
-          model: openai/mistralai/Mistral-Small-3.2-24B-Instruct-2506
-          api_key: os.environ/CA_VLLM_LOCAL_API_KEY
-          api_base: http://vllm-router-service.vllm.svc.cluster.local/v1
-          max_tokens: 8192
-        guardrails:
-          - message_trimming
-
       - model_name: openai/gpt-oss-120b
         litellm_params:
           model: openai/openai/gpt-oss-120b
