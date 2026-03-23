@@ -406,14 +406,14 @@ open-webui:
     - name: RAG_TEXT_SPLITTER
       value: "character"
     - name: RAG_EMBEDDING_MODEL
-      value: "intfloat/multilingual-e5-large"
+      value: intfloat/multilingual-e5-large
     - name: RAG_OPENAI_API_BASE_URL
-      value: "http://vllm-router-service.vllm.svc.cluster.local/v1"
+      value: http://litellm.litellm.svc.cluster.local:4000/v1
     - name: RAG_OPENAI_API_KEY
       valueFrom:
         secretKeyRef:
           name: openwebui-secrets
-          key: RAG_OPENAI_API_KEY
+          key: OPENAI_API_KEY
     - name: RAG_EMBEDDING_BATCH_SIZE
       value: "64"
 
@@ -500,7 +500,7 @@ open-webui:
         ### Eksempler på DÅRLIGE queries (undgå):
         ❌ "Aarhus byråd" (for bred)
         ❌ "medlemmer Aarhus byråd" (unatural ordstilling)
-        ❌ "hvordan virker byråd" (forkert fokus)  
+        ❌ "hvordan virker byråd" (forkert fokus)
 
         ### Hvornår søge:
         ✓ Fakta, tal, navne, aktuelle data
